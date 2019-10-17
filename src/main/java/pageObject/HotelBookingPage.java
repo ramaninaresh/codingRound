@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -53,13 +54,13 @@ public class HotelBookingPage extends BasePageObject implements Object_Repo_All 
 
 
 
-    public boolean SearchHotel(String place,String travellerType)
+    public boolean SearchHotel(String place,String travellerType,String beginDayOfMonth, String endDayOfMonth)
     {
         System.out.println("Searching Hotel");
         try {
             waitElementTobeClickable(20,driver,localityTextBox,"HotelBookingPage");
             localityTextBox.clear();
-            localityTextBox.sendKeys("Bangalore" );
+            localityTextBox.sendKeys(place);
             System.out.println("Waiting for list box to appear");
             Hard_wait(10000);
             System.out.println("Getting option from the list");
@@ -70,13 +71,13 @@ public class HotelBookingPage extends BasePageObject implements Object_Repo_All 
 
             System.out.print("Updated: Location");
 
-            CheckInDate.click();
-            SelectDate("17");
+           CheckInDate.click();
+            SelectDate(beginDayOfMonth);
 
             System.out.print("Updated: BeginDate");
 
             CheckOutDate.click();
-            SelectDate("18");
+            SelectDate(endDayOfMonth);
 
             System.out.print("Updated: EndDate");
 

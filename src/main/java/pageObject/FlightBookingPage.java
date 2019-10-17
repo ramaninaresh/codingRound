@@ -42,7 +42,7 @@ public class FlightBookingPage extends BasePageObject implements Object_Repo_All
         waitforPageLoad(20,driver,Flight_ID_from_option_elem,"FlightBookingPage");
     }
 
-    public boolean bookFlight()
+    public boolean bookFlight(String placeFrom,String placeTo)
     {   try
         {
         waitElementTobeClickable(20, driver, Flight_OneWay_Option_elem, "FlightBookingPage");
@@ -51,7 +51,7 @@ public class FlightBookingPage extends BasePageObject implements Object_Repo_All
 
         waitElementTobeClickable(20, driver, Flight_ID_from_option_elem, "FlighBookingPage");
         Flight_ID_from_option_elem.clear();
-        Flight_ID_from_option_elem.sendKeys("Bangalore");
+        Flight_ID_from_option_elem.sendKeys(placeFrom);
         Hard_wait(10000);
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
@@ -59,7 +59,7 @@ public class FlightBookingPage extends BasePageObject implements Object_Repo_All
 
         waitElementTobeClickable(20, driver, Flight_ID_to_option_elem, "FlightBookingPage");
         Flight_ID_to_option_elem.clear();
-        Flight_ID_to_option_elem.sendKeys("Delhi");
+        Flight_ID_to_option_elem.sendKeys(placeTo);
         Hard_wait(10000);
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
         destinationOptions.get(0).click();

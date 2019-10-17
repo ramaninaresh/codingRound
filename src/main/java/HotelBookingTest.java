@@ -15,7 +15,12 @@ public class HotelBookingTest extends BaseTest {
        homePage.click_Hotel_Tab();
 
        HotelBookingPage hotelBookingPage = new HotelBookingPage(driver);
-       boolean searchOperation=hotelBookingPage.SearchHotel("Banglore","1 room, 2 adults");
+       boolean searchOperation=hotelBookingPage.SearchHotel(
+                        properties.getProperty("HOTEL_PLACE"),
+                        properties.getProperty("HOTEL_TRAVELLER_TYPE"),
+                        properties.getProperty("HOTEL_BEGIN_DAY_OF_MONTH"),
+                        properties.getProperty("HOTEL_END_DAY_OF_MONTH"))
+               ;
        if(searchOperation) {
            boolean result = hotelBookingPage.verifySearch();
            Assert.assertTrue(result, "Result is not successfull");
