@@ -5,6 +5,7 @@
   <groupId>com.testvagrant.codingRound</groupId>
   <artifactId>codoingRound</artifactId>
   <version>1.0-SNAPSHOT</version>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

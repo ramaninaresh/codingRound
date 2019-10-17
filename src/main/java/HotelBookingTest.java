@@ -1,53 +1,33 @@
-import com.sun.javafx.PlatformUtil;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
+import base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObject.HomePage;
+import pageObject.HotelBookingPage;
+import pageObject.SignInPage;
 
-public class HotelBookingTest {
+public class HotelBookingTest extends BaseTest {
 
-    WebDriver driver = new ChromeDriver();
 
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
 
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
-
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
-
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
-
-    @Test
+   @Test
     public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
+       HomePage homePage = new HomePage(driver);
+       homePage.click_Hotel_Tab();
 
-        driver.get("https://www.cleartrip.com/");
-        hotelLink.click();
+       HotelBookingPage hotelBookingPage = new HotelBookingPage(driver);
+       boolean searchOperation=hotelBookingPage.SearchHotel("Banglore","1 room, 2 adults");
+       if(searchOperation) {
+           Boolean result = hotelBookingPage.verifySearch();
+           Assert.assertTrue(result, "Result is not successfull");
+       }
+       else
+       {
+           Assert.assertTrue(false,"Result is not successfull");
+       }
 
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
 
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
 
-        driver.quit();
 
-    }
-
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
     }
 
 }
