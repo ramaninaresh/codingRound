@@ -14,12 +14,12 @@ String Hotel_ID_SearchButton="SearchHotelsButton";
 String Hotel_ID_travellersOnhome="travellersOnhome";
 String Hotel_xpath_CheckInDate="//*[@id='CheckInDate']";
 String Hotel_xpath_CheckOutDate="//*[@id='CheckOutDate']";
-String Hotel_xpath_modifySearchLink="//*[@id='modifySearchLink']";
+String Hotel_xpath_modifySearchLink="//div[@class='searchSummary']";
 
 String Flight_link_text="Flights";
 String Flight_ID_OneWay_Option="OneWay";
 String Flight_ID_from_option="FromTag";
-String Flight_ID_to_option="toTag";
+String Flight_ID_to_option="ToTag";
 String Flight_xpath_cal="//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a";
 String Flight_ID_search_button="SearchBtn";
 String Flight_class_searchSummary="searchSummary";

@@ -31,32 +31,31 @@ public class SignInPage extends BasePageObject implements Object_Repo_All {
 
         this.driver=driver;
         PageFactory.initElements(driver, this);
-        waitforPageLoad(5,driver,SignIn_link,"SignInPage");
+        waitforPageLoad(20,driver,SignIn_link,"SignInPage");
     }
 
     public String getUnsuccessfulLoginMessage()
-    {   waitElementTobeVisible(5,driver,error_message,"SignInPage");
+    {   waitElementTobeVisible(20,driver,error_message,"SignInPage");
         return error_message.getText();
 
     }
 
     public Boolean loginWithoutData(){
 
-        waitElementTobeClickable(2,driver,SignIn_link,"SignInPage");
+        waitElementTobeClickable(20,driver,SignIn_link,"SignInPage");
         SignIn_link.click();
-        System.out.println("Link clicked: SignIn");
 
         System.out.println("Switching to: Iframe");
         try {
             driver.switchTo().frame(Signin_Model_Iframe);
             System.out.println("Switching to Iframe completed");
-            waitElementTobeClickable(2,driver,SignIn_Button,"SignInPage");
+            waitElementTobeClickable(20,driver,SignIn_Button,"SignInPage");
             SignIn_Button.click();
-            System.out.println("Button clicked: SignIn");
+
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+
             return false;
 
         }

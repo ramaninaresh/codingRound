@@ -37,7 +37,7 @@ public class HotelBookingPage extends BasePageObject implements Object_Repo_All 
     @FindBy(id = Hotel_ID_SearchButton)
     private WebElement searchButton;
 
-    @FindBy(id = Hotel_xpath_modifySearchLink)
+    @FindBy(xpath = Hotel_xpath_modifySearchLink)
     private WebElement modifySearchLink;
 
     @FindBy(xpath = Date_Picker_Table)
@@ -48,19 +48,25 @@ public class HotelBookingPage extends BasePageObject implements Object_Repo_All 
     public HotelBookingPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        waitforPageLoad(5,driver,localityTextBox,"HotelBookingPage");
+        waitforPageLoad(20,driver,localityTextBox,"HotelBookingPage");
     }
 
 
 
-    public Boolean SearchHotel(String place,String travellerType)
+    public boolean SearchHotel(String place,String travellerType)
     {
+        System.out.println("Searching Hotel");
         try {
-            System.out.println("Switching to iframe");
-        //    driver.switchTo().frame("fb_xdm_frame_https");
-            waitElementTobeClickable(2,driver,localityTextBox,"HotelBookingPage");
+            waitElementTobeClickable(20,driver,localityTextBox,"HotelBookingPage");
             localityTextBox.clear();
-            localityTextBox.sendKeys("Bangalore" + Keys.RETURN);
+            localityTextBox.sendKeys("Bangalore" );
+            System.out.println("Waiting for list box to appear");
+            Hard_wait(10000);
+            System.out.println("Getting option from the list");
+            List<WebElement> originOptions = driver.findElement(By.xpath("//li[@role='presentation']")).findElements(By.tagName("a"));
+            System.out.println("List size for place is " + originOptions.size());
+            originOptions.get(0).click();
+
 
             System.out.print("Updated: Location");
 
@@ -79,19 +85,20 @@ public class HotelBookingPage extends BasePageObject implements Object_Repo_All 
             select.selectByVisibleText(travellerType);
             System.out.print("Selected: TravellerType");
 
-            waitElementTobeClickable(2,driver,searchButton,"HotelBookingPage");
+            waitElementTobeClickable(20,driver,searchButton,"HotelBookingPage");
             searchButton.click();
-            System.out.println("Clicked: Search button");
+
             return true;
         }
         catch(Exception e){
+
             return  false;
         }
 
 
     }
 
-    public Boolean verifySearch()
+    public boolean verifySearch()
     {   return modifySearchLink.isDisplayed();
 
     }

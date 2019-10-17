@@ -25,8 +25,8 @@ public class FlightBookingTest extends BaseTest {
         homePage.click_Flight_Tab();
 
         FlightBookingPage flightBookingPage = new FlightBookingPage(driver);
-        boolean flighbookingOperation=flightBookingPage.bookFlight();
-        if (flighbookingOperation) {
+        boolean flightbookingOperation=flightBookingPage.bookFlight();
+        if (flightbookingOperation) {
             Boolean result = flightBookingPage.verifyBooking();
             Assert.assertTrue(result, "Booking was not completed ");
         }

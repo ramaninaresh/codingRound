@@ -17,7 +17,7 @@ public class HotelBookingTest extends BaseTest {
        HotelBookingPage hotelBookingPage = new HotelBookingPage(driver);
        boolean searchOperation=hotelBookingPage.SearchHotel("Banglore","1 room, 2 adults");
        if(searchOperation) {
-           Boolean result = hotelBookingPage.verifySearch();
+           boolean result = hotelBookingPage.verifySearch();
            Assert.assertTrue(result, "Result is not successfull");
        }
        else

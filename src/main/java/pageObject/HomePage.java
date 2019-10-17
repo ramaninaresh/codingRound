@@ -28,25 +28,24 @@ public class HomePage extends BasePageObject implements Object_Repo_All {
         System.out.println("Initializing Page: HomePage");
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        waitforPageLoad(5,driver,Your_trip_link,"HomePage");
+        waitforPageLoad(20,driver,Your_trip_link,"HomePage");
     }
 
     public void click_YourTrips()
     {
-        waitElementTobeClickable(10,driver,Your_trip_link,"HomePage");
-        System.out.println("Clicking Link: Your Trips");
+        waitElementTobeClickable(20,driver,Your_trip_link,"HomePage");
         Your_trip_link.click();
     }
 
     public void click_Hotel_Tab()
     {
-        waitElementTobeClickable(10,driver,Hotel_link_text_elem,"HomePage");
+        waitElementTobeClickable(20,driver,Hotel_link_text_elem,"HomePage");
         Hotel_link_text_elem.click();
     }
 
     public void click_Flight_Tab()
     {
-        waitElementTobeClickable(10,driver,Flight_link_text_elem,"HomePage");
+        waitElementTobeClickable(20,driver,Flight_link_text_elem,"HomePage");
         Flight_link_text_elem.click();
     }
 

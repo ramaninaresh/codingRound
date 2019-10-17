@@ -39,43 +39,39 @@ public class FlightBookingPage extends BasePageObject implements Object_Repo_All
     public FlightBookingPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        waitforPageLoad(10,driver,Flight_ID_from_option_elem,"FlightBookingPage");
+        waitforPageLoad(20,driver,Flight_ID_from_option_elem,"FlightBookingPage");
     }
 
     public boolean bookFlight()
     {   try
         {
-        waitElementTobeClickable(2, driver, Flight_OneWay_Option_elem, "FlighBookingPage");
+        waitElementTobeClickable(20, driver, Flight_OneWay_Option_elem, "FlightBookingPage");
         Flight_OneWay_Option_elem.click();
-        System.out.println("Element Clicked");
 
-        waitElementTobeClickable(2, driver, Flight_ID_from_option_elem, "FlighBookingPage");
+
+        waitElementTobeClickable(20, driver, Flight_ID_from_option_elem, "FlighBookingPage");
         Flight_ID_from_option_elem.clear();
         Flight_ID_from_option_elem.sendKeys("Bangalore");
-        System.out.println("Updated From Location");
-
-        Hard_wait(5000);
+        Hard_wait(10000);
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
-        System.out.println("Selected option form the list");
 
-        waitElementTobeClickable(2, driver, Flight_ID_to_option_elem, "FlighBookingPage");
+
+        waitElementTobeClickable(20, driver, Flight_ID_to_option_elem, "FlightBookingPage");
         Flight_ID_to_option_elem.clear();
         Flight_ID_to_option_elem.sendKeys("Delhi");
-        System.out.println("Updated to Location");
-
-        Hard_wait(5000);
+        Hard_wait(10000);
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
         destinationOptions.get(0).click();
-        System.out.println("Selected option form the list");
 
-        waitElementTobeClickable(2, driver, Flight_xpath_cal_elem, "FlighBookingPage");
+
+        waitElementTobeClickable(20, driver, Flight_xpath_cal_elem, "FlighBookingPage");
         Flight_xpath_cal_elem.click();
-        System.out.println("element clicked");
 
-        waitElementTobeClickable(2, driver, Flight_ID_search_button_elem, "FlighBookingPage");
+
+        waitElementTobeClickable(20, driver, Flight_ID_search_button_elem, "FlighBookingPage");
         Flight_ID_search_button_elem.click();
-        System.out.println("element clicked");
+
         return true;
     }
     catch (Exception e)

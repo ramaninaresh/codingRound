@@ -5,6 +5,8 @@
       <!--  <parameter name="Browser" value="firefox"></parameter>-->
         <classes>
             <class name="FlightBookingTest" />
+            <class name="HotelBookingTest"/>
+            <class name="SignInTest" />
         </classes>
     </test> <!-- Test -->
 
